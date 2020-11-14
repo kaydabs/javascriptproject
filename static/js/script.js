@@ -77,7 +77,7 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
     humanDiv.innerHTML = "<img src='" + imageDatabbase[humanImageChoice] + "' height=150 width=150 style='box-shadow: 0px 10px 50px rgba(37, 50, 233,1);'>"
     messageDiv.innerHTML = "<h1 style='color: " + finalMessage['color'] + "; font-size: 60px; padding: 30px; '>" + finalMessage['message'] + "</h1>"
     botDiv.innerHTML = "<img src='" + imageDatabbase[botImageChoice] + "' height=150 width=150 style='box-shadow: 0px 10px 50px rgba(243, 38, 233, 1);'>"
-    
+      
     document.getElementById('flex-box-rps-div').appendChild(humanDiv);
     document.getElementById('flex-box-rps-div').appendChild(botDiv);
     document.getElementById('flex-box-rps-div').appendChild(messageDiv);
@@ -135,3 +135,26 @@ function randomColors(){
     }
 
 }
+//Challenge 5 - Blackjack
+
+let blackjackGame = {
+    'you': {'scoreSpan': '#your-blackjack-result', 'div': '#your-box', 'score': 0},
+    'dealer': {'scoreSpan': '#dealer-blackjack-result', 'div': '#dealer-box', 'score': 0}
+
+}
+
+const YOU = blackjackGame['you']
+const DEALER = blackjackGame['dealer']
+
+const hitSound = new Audio('static/sounds/swish.m4a');
+
+document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
+
+function blackjackHit() {
+    //this is how to create an element in html
+    let cardImage = document.createElement('img');
+    cardImage.src = 'static/images/Q.png';
+    document.querySelector(YOU['div']).appendChild(cardImage);
+    hitSound.play();
+}
+
